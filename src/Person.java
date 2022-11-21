@@ -1,33 +1,56 @@
 public class Person {
-    int yearOfBirth;
-    String name;
-    String town;
-    String jobTitle;
+    private int yearOfBirth;
+    public String name;
+    private String town;
+    public String jobTitle;
 
-    Person(int yearOfBirth, String name, String town, String jobTitle) {
-        this.yearOfBirth = yearOfBirth;
-        if (yearOfBirth >= 0) {
-            this.yearOfBirth = yearOfBirth;
+
+    public Person(int yearOfBirth, String name, String town, String jobTitle) {
+        if (yearOfBirth < 0) {
+            this.yearOfBirth = 0;
         }else {
-            this.yearOfBirth = Math.abs(yearOfBirth);
+            this.yearOfBirth = yearOfBirth;
         }
-        this.name = name;
         if (name == null) {
-            System.out.println("Информация не указана");
-
+            this.name = "Информация не указана";
+        }else {
+            this.name = name;
         }
-        this.town = town;
         if (town == null) {
-            System.out.println("Информация не указана");
+            this.town = "Информация не указана";
+        }else {
+            this.town = town;
         }
+        if (jobTitle == null) {
+            this.jobTitle = "Информация не указана";
+        }else {
             this.jobTitle = jobTitle;
-            if (jobTitle == null) {
-                System.out.println("Информация не указана");
-            }
         }
+    }
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
 
-    void acquaintance() {
-        System.out.println("Привет! Меня зовут " + name + ". Я из города " + town + ". Я родился в " + yearOfBirth + " году.Я работаю на должности " + jobTitle + ". Будем знакомы!");
+    public void setYearOfBirth(int yearOfBirth) {
+        if (yearOfBirth < 0) {
+            this.yearOfBirth = 0;
+        }else {
+            this.yearOfBirth = yearOfBirth;
+        }    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        if (town == null) {
+            this.town = "Информация не указана";
+        }else {
+            this.town = town;
+        }    }
+
+    void acquaintance(Person person) {
+        System.out.println("Привет! Меня зовут " + person.name + ". Я из города " + person.getTown() + ". Я родился в " + person.getYearOfBirth() + " году.Я работаю на должности " + person.jobTitle + ". Будем знакомы!");
     }
 }
 //"Привет! Меня зовут… Я из города… Я родился в… году. Будем знакомы!"
